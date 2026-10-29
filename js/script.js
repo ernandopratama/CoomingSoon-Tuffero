@@ -152,6 +152,12 @@
         }
 
         button.addEventListener("click", function () {
+            // Mobile/tablet: panel already sits below, so only scroll; overlay state stays untouched.
+            if (window.matchMedia("(max-width: 1024px)").matches) {
+                rightSide.scrollIntoView({ behavior: "smooth" });
+                return;
+            }
+
             const overlay = document.querySelector(".overlay");
             const closeButton = document.getElementById("close-more-info");
             const scrollbarTools = document.querySelector(".mCSB_scrollTools");
@@ -168,11 +174,6 @@
 
             if (scrollbarTools) {
                 scrollbarTools.classList.toggle("mCSB_scrollTools-left");
-            }
-
-            if (window.matchMedia("(max-width: 1024px)").matches) {
-                rightSide.scrollIntoView({ behavior: "smooth" });
-                return;
             }
 
             window.setTimeout(function () {
