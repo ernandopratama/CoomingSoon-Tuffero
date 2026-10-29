@@ -1,5 +1,5 @@
 ---
-name: Haute Pâtisserie Dark Chocolate & Champagne Gold
+name: Tuffero Pâtisserie
 colors:
   surface: "#1e1009"
   surface-dim: "#1e1009"
@@ -157,7 +157,7 @@ spacing:
 
 ## Brand & Style
 
-This design system expresses the sensory precision and timeless decadence of luxury French haute pâtisserie. Balancing dramatic darkness with opulent warmth, it mirrors the atmosphere of an intimate Parisian atelier: rich cocoa tones, glowing champagne leaf accents, and delicate ivory porcelain surfaces.
+This design system expresses the sensory precision and timeless decadence of luxury French Tuffero pâtisserie. Balancing dramatic darkness with opulent warmth, it mirrors the atmosphere of an intimate Parisian atelier: rich cocoa tones, glowing champagne leaf accents, and delicate ivory porcelain surfaces.
 
 ### Aesthetic Movement & Philosophy
 
