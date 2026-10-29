@@ -142,7 +142,8 @@ body.vegas-container > .global-overlay {
    KONTEN DI ATAS BACKGROUND
    ======================================== */
 
-body.vegas-container > :not(.vegas-slide):not(.vegas-timer):not(.vegas-overlay) {
+/* .global-overlay excluded: this selector outranks its position: fixed above. */
+body.vegas-container > :not(.vegas-slide):not(.vegas-timer):not(.vegas-overlay):not(.global-overlay) {
     position: relative;
     z-index: 1;
 }

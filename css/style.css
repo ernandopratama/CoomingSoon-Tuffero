@@ -319,6 +319,16 @@ body {
 
 /* Responsive: tombol aksi dan ikon sosial di tengah layar */
 @media (max-width: 1024px) {
+    /* Hero fills the first screen; #right-side starts below the fold. */
+    #left-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100vh;
+        min-height: 100dvh;
+        box-sizing: border-box;
+    }
+
     .tuffero-actions {
         justify-content: center;
     }
