@@ -9,7 +9,8 @@
  * --------------------------------------------------------------------------*/
 
 
-$(window).on('load', function () {
+// Mulai slideshow setelah loader logo selesai (event dari js/tuffero-loader.js)
+$(document).on('tuffero:loaded', function () {
     setTimeout(function () {
         $('body').vegas({
             slides: [

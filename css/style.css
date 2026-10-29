@@ -7,7 +7,7 @@
 /* 1. Base styles
    ========================================================= */
 
-/* Tokens follow docs/DESIGN.md (Haute Pâtisserie Dark Chocolate & Champagne Gold). */
+/* Tokens follow docs/DESIGN.md (Tuffero Pâtisserie). */
 :root {
     --tuffero-bg: #2b1b14;
     --tuffero-surface: rgba(109, 76, 61, 0.2);
@@ -1256,9 +1256,7 @@ body {
 /* 14. Loading state
    ========================================================= */
 
-#loading {
-    background: var(--tuffero-bg);
-}
+/* Loader logo: lihat blok "TUFFERO — LOGO LIGHT-DRAW LOADER" di css/style-product.css */
 
 /* 15. Responsive layout
    ========================================================= */

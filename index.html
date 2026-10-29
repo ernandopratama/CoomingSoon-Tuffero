@@ -67,13 +67,54 @@
 
 <body>
 
-    <!-- Loading -->
-    <div id="loading">
-        <div id="preloader">
-            <span></span>
-            <span></span>
+    <!-- TUFFERO ANIMATED LOGO LOADER -->
+    <div
+        id="tuffero-loader"
+        class="tuffero-loader"
+        role="status"
+        aria-live="polite"
+        aria-label="Memuat website Tuffero"
+    >
+        <div class="tuffero-loader__content">
+
+            <div class="tuffero-logo-stage" id="tuffero-logo-stage" aria-hidden="true">
+                <span class="tuffero-streak tuffero-streak--left"></span>
+                <span class="tuffero-streak tuffero-streak--right"></span>
+                <img
+                    id="tuffero-logo-source"
+                    src="img/Tuffero Script Logo White - NoBckgrnd.png"
+                    alt=""
+                    class="tuffero-logo"
+                    width="2172"
+                    height="724"
+                    fetchpriority="high"
+                    draggable="false"
+                >
+                <span class="tuffero-pen"></span>
+                <span class="tuffero-logo-floor"></span>
+            </div>
+
+            <div class="tuffero-loader__ornament" aria-hidden="true">
+                <span></span>
+                <i></i>
+                <span></span>
+            </div>
+
+            <p class="tuffero-loader__message">
+                Mempersiapkan sesuatu yang istimewa
+            </p>
+
+            <div class="tuffero-loader__track" aria-hidden="true">
+                <div class="tuffero-loader__progress"></div>
+            </div>
+
+            <span class="tuffero-loader__caption">
+                TUFFERO PÂTISSERIE
+            </span>
+
         </div>
     </div>
+    <!-- END TUFFERO ANIMATED LOGO LOADER -->
 
     <!-- Background overlay -->
     <div class="global-overlay">
@@ -727,6 +768,9 @@
     <script src="js/photoswipe-ui-default.js"></script>
     <!-- Custom JavaScript Tuffero -->
     <script src="js/script.js"></script>
+
+    <!-- Loader logo Tuffero (memicu intro main.js lewat event "tuffero:loaded") -->
+    <script src="js/tuffero-loader.js"></script>
 
     <!-- Main template script -->
     <script src="js/main.js"></script>
