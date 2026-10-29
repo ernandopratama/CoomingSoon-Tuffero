@@ -4,7 +4,7 @@
  *
  * Animasi murni CSS (css/style-product.css). Script ini:
  * - menambah percikan cahaya,
- * - menunggu gambar halaman + slideshow Vegas,
+ * - menunggu gambar halaman + slide Vegas pertama,
  * - menahan loader sampai animasi logo selesai,
  * - memicu event "tuffero:loaded" agar main.js memulai intro halaman.
  */
@@ -18,10 +18,14 @@
 
     if (!loader || !stage || !logo) return;
 
-    // Animasi logo di CSS selesai ≈ 5.55s (lompat terakhir), lalu tahan 3s sebelum halaman tampil
-    const MIN_VISIBLE_MS = 5550 + 3000;
+    // Animasi logo di CSS selesai ≈ 5.55s, lalu tahan 1s sebelum halaman tampil
+    const MIN_VISIBLE_MS = 5550 + 1000;
     const SPARK_COUNT = 18;
-    const startedAt = Date.now();
+    // Animasi CSS mulai di frame pertama, bukan saat script ini jalan (CSS CDN bisa menunda render).
+    let startedAt = Date.now();
+    requestAnimationFrame(function () {
+        startedAt = Date.now();
+    });
 
     let loaderHidden = false;
 
@@ -79,19 +83,11 @@
     }
 
     /*
-     * Tunggu semua latar Vegas (lihat js/vegasq.js).
+     * Tunggu slide Vegas pertama saja (lihat js/vegasq.js); slide lain
+     * dimuat Vegas sendiri selama jeda antarslide.
      */
-    function waitForVegasImages() {
-        const vegasImages = [
-            "img/slide/qslide-1.png",
-            "img/slide/qslide-2.png",
-            "img/slide/qslide-3.png",
-            "img/slide/qslide-4.png",
-            "img/slide/qslide-5.png",
-            "img/slide/qslide-6.png"
-        ];
-
-        return Promise.all(vegasImages.map(waitForImage));
+    function waitForFirstSlide() {
+        return waitForImage("img/slide/qslide-1.png");
     }
 
     function hideLoader() {
@@ -122,16 +118,9 @@
         buildSparks();
     }
 
-    function finishLoading() {
-        Promise.all([
-            waitForPageImages(),
-            waitForVegasImages()
-        ]).then(hideAfterAnimation, hideAfterAnimation);
-    }
-
-    if (document.readyState === "complete") {
-        finishLoading();
-    } else {
-        window.addEventListener("load", finishLoading, { once: true });
-    }
+    // Tanpa menunggu window "load": itu ikut menunggu semua slide (±11 MB).
+    Promise.all([
+        waitForPageImages(),
+        waitForFirstSlide()
+    ]).then(hideAfterAnimation, hideAfterAnimation);
 })();

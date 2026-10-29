@@ -201,7 +201,7 @@ body.vegas-container:has(#right-side:not(.hide-right), .dialog--open, .pswp--ope
    TUFFERO — LOGO LIGHT-DRAW LOADER
    Garis cahaya kiri/kanan bertemu, logo "ditulis"
    dari kiri ke kanan dengan pena cahaya emas,
-   lalu mendingin menjadi putih, melompat kecil, stabil.
+   lalu mendingin menjadi putih dan stabil.
 ========================================= */
 
 #tuffero-loader {
@@ -282,12 +282,11 @@ body.vegas-container:has(#right-side:not(.hide-right), .dialog--open, .pswp--ope
         drop-shadow(0 0 12px rgba(242, 155, 60, 0.85))
         drop-shadow(0 0 30px rgba(205, 115, 30, 0.6));
 
-    will-change: transform, filter;
+    will-change: filter;
 
     animation:
         tuffero-logo-write 2.85s cubic-bezier(0.45, 0.05, 0.35, 1) 1.05s forwards,
-        tuffero-logo-cool 1.2s ease-out 3.75s forwards,
-        tuffero-logo-bounce 1.05s cubic-bezier(0.3, 0, 0.3, 1) 4.5s both;
+        tuffero-logo-cool 1.2s ease-out 3.75s forwards;
 }
 
 /* Garis cahaya dari kiri dan kanan */
@@ -522,15 +521,6 @@ body.vegas-container:has(#right-side:not(.hide-right), .dialog--open, .pswp--ope
             drop-shadow(0 0 10px rgba(214, 150, 70, 0.18))
             drop-shadow(0 0 0 rgba(205, 115, 30, 0));
     }
-}
-
-/* Melompat kecil lalu stabil */
-@keyframes tuffero-logo-bounce {
-    0%   { transform: translateY(0); }
-    30%  { transform: translateY(-9px); }
-    55%  { transform: translateY(2px); }
-    75%  { transform: translateY(-2px); }
-    100% { transform: translateY(0); }
 }
 
 @keyframes tuffero-spark {
