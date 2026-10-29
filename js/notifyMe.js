@@ -84,7 +84,8 @@
                 type: "POST",
                 url: url,
                 data: {
-                    email: h
+                    email: h,
+                    website: form.find("input[name=website]").val()
                 },
                 dataType: "json"
             }).always(function() {

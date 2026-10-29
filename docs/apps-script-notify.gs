@@ -13,6 +13,11 @@
 const SHEET_NAME = 'Subscribers';
 
 function doPost(e) {
+  // Honeypot terisi = bot. Balas sukses agar bot tidak tahu ditolak.
+  if (e && e.parameter && e.parameter.website) {
+    return json({ status: 'success' });
+  }
+
   const email = String((e && e.parameter && e.parameter.email) || '').trim().toLowerCase();
 
   // Tolak format salah dan awalan yang bisa dibaca Sheets sebagai rumus.

@@ -26,16 +26,24 @@
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.0/photoswipe.min.css"
+        integrity="sha384-RwqXktmFwvDy302OEXDYKmhW7nwptXdAvYhepOVl+1EP3ecU4MBqZUS4PfgE3Odi"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
     />
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.0/default-skin/default-skin.min.css"
+        integrity="sha384-40/4ldoa8HiOXttRhjIvAA6V7mrBfIEyeAUCBQ9h5IewJEKbXtlNQNCXwAkS+vZ/"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
     />
 
     <!-- Font Awesome CDN -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha384-qrALq7+6jBOZIQsNnT6xGkMDru64qD6uTlDra39xrt2SoXl4pO3FX6Roz/RpR/BS"
+        crossorigin="anonymous"
         referrerpolicy="no-referrer"
     />
 
@@ -541,7 +549,7 @@
                 <div id="subscribe">
 
                     <!-- Ganti PASTE_DEPLOYMENT_ID dengan URL Web App dari docs/apps-script-notify.gs -->
-                    <form id="notifyMe" method="POST" action="https://script.google.com/macros/s/AKfycbxx4M8wjsbLfgldA0l43yWiC_wyEqaRV95mr8ZlWzzd9wsQZdEU6zn9LATNo3Fy8j1FAg/exec" novalidate>
+                    <form id="notifyMe" method="POST" action="https://script.google.com/macros/s/AKfycbzFALtKPRew9RN-4R_CdewYq7gJBuWmUx-6djPzPAQQzqbbzV5VEPUWwzqQGsM9tQ1w/exec" novalidate>
 
                         <div class="form-group">
                             <div class="controls">
@@ -553,6 +561,9 @@
                                     </svg>
                                     <span class="notify-error-text"></span>
                                 </div>
+
+                                <!-- Honeypot anti-bot: manusia tidak melihat field ini. -->
+                                <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
 
                                 <label class="visually-hidden" for="mail-sub">Alamat email</label>
                                 <input
@@ -583,7 +594,7 @@
                 </div>
 
                 <p class="newsletter-privacy">
-                    Kami menghargai privasi Anda. Berhenti berlangganan kapan saja.
+                    Terimakasih Salam Hangat Tuffero & Team.
                 </p>
             </div>
 
@@ -707,7 +718,6 @@
     <script src="js/velocity.min.js"></script>
     <script src="js/velocity.ui.min.js"></script>
     <script src="js/notifyMe.js"></script>
-    <script src="js/contact-meq.js"></script>
     <script src="js/vegasq.js"></script>
     <script src="js/jquery.mousewheel.js"></script>
     <script src="js/jquery.mCustomScrollbar.js"></script>
