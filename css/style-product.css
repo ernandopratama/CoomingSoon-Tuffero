@@ -142,8 +142,9 @@ body.vegas-container > .global-overlay {
    KONTEN DI ATAS BACKGROUND
    ======================================== */
 
-/* .global-overlay excluded: this selector outranks its position: fixed above. */
-body.vegas-container > :not(.vegas-slide):not(.vegas-timer):not(.vegas-overlay):not(.global-overlay) {
+/* Content sections only: a catch-all here would override the position: fixed of overlays and modals. */
+body.vegas-container > #left-side,
+body.vegas-container > #right-side {
     position: relative;
     z-index: 1;
 }
