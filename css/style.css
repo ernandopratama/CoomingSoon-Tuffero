@@ -1,0 +1,2101 @@
+
+/* =========================================================
+   TUFFERO COMING SOON
+   Custom styles for the PHLY countdown template
+   ========================================================= */
+
+/* 1. Base styles
+   ========================================================= */
+
+/* Tokens follow docs/DESIGN.md (Haute Pâtisserie Dark Chocolate & Champagne Gold). */
+:root {
+    --tuffero-bg: #2b1b14;
+    --tuffero-surface: rgba(109, 76, 61, 0.2);
+    --tuffero-text: #f6f0e5;
+    --tuffero-muted: #d1c5b4;
+    --tuffero-accent: #c6a15b;
+    --tuffero-accent-hover: #dfb86c;
+    --tuffero-border: rgba(227, 213, 192, 0.15);
+    --tuffero-radius: 8px;
+    --tuffero-radius-sm: 4px;
+    --tuffero-font-display: "Bodoni Moda", Georgia, serif;
+    --tuffero-font-body: "Manrope", Arial, sans-serif;
+    --tuffero-shadow-low: 0 4px 16px -2px rgba(18, 11, 8, 0.6), 0 0 1px rgba(198, 161, 91, 0.15);
+    --tuffero-transition: 0.25s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--tuffero-bg);
+    color: var(--tuffero-text);
+    font-family: var(--tuffero-font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+body,
+button,
+input,
+textarea {
+    font-family: var(--tuffero-font-body);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    transition:
+        color var(--tuffero-transition),
+        background-color var(--tuffero-transition),
+        border-color var(--tuffero-transition),
+        opacity var(--tuffero-transition);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--tuffero-accent);
+    outline-offset: 4px;
+}
+
+button,
+input,
+textarea {
+    font-size: inherit;
+}
+
+/* 2. Background and overlay
+   ========================================================= */
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.global-overlay {
+    background-color: var(--tuffero-bg);
+}
+
+#stars,
+#stars2,
+#stars3 {
+    pointer-events: none;
+}
+
+/* 3. Tuffero logo
+   ========================================================= */
+
+.tuffero-logo {
+    display: inline-block;
+    width: 200px;
+    color: var(--tuffero-text);
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    line-height: 1.2;
+    text-decoration: none;
+}
+
+.tuffero-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.tuffero-logo:hover,
+.tuffero-logo:focus {
+    color: var(--tuffero-accent);
+    text-decoration: none;
+}
+
+/* 4. Main content
+   ========================================================= */
+
+#left-side .content {
+    max-width: 760px;
+}
+
+#left-side h1 {
+    color: var(--tuffero-text);
+    font-size: clamp(30px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+#left-side h2 {
+    max-width: 650px;
+    color: var(--tuffero-muted);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.9;
+}
+
+#left-side nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-left: 0;
+    list-style: none;
+}
+
+#left-side nav li {
+    margin: 0;
+}
+
+.tuffero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.tuffero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 13px 22px;
+    border: 1px solid transparent;
+    border-radius: var(--tuffero-radius-sm);
+    font-family: var(--tuffero-font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        color 0.3s ease;
+}
+
+.tuffero-btn svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+}
+
+.tuffero-btn-primary {
+    color: var(--tuffero-bg);
+    background: var(--tuffero-accent);
+}
+
+.tuffero-btn-primary:hover {
+    background: var(--tuffero-accent-hover);
+    box-shadow: 0 0 16px rgba(198, 161, 91, 0.35);
+    transform: translateY(-2px);
+}
+
+.tuffero-btn-outline {
+    color: var(--tuffero-text);
+    background: transparent;
+    border-color: rgba(198, 161, 91, 0.6);
+}
+
+.tuffero-btn-outline:hover {
+    color: var(--tuffero-text);
+    background: rgba(109, 76, 61, 0.3);
+    border-color: var(--tuffero-accent);
+    transform: translateY(-2px);
+}
+
+.tuffero-btn-outline svg {
+    transition: transform 0.3s ease;
+}
+
+.tuffero-btn-outline:hover svg {
+    transform: translateX(3px);
+}
+
+.tuffero-btn:focus-visible {
+    outline: 2px solid var(--tuffero-accent-hover);
+    outline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+    .tuffero-actions {
+        gap: 10px;
+    }
+
+    .tuffero-btn {
+        min-height: 44px;
+        padding: 12px 15px;
+        font-size: 11px;
+        letter-spacing: 0.03em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tuffero-btn,
+    .tuffero-btn-outline svg {
+        transition: none;
+    }
+}
+
+/* 5. Buttons
+   ========================================================= */
+
+.light-btn,
+.action-btn,
+.get_now_btn,
+.btn-color {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 24px;
+    border: 1px solid var(--tuffero-accent);
+    border-radius: var(--tuffero-radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--tuffero-transition);
+}
+
+.light-btn {
+    background: transparent;
+    color: var(--tuffero-text);
+}
+
+.light-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--tuffero-accent);
+}
+
+.action-btn,
+.get_now_btn,
+.btn-color {
+    background: var(--tuffero-accent);
+    color: var(--tuffero-bg);
+}
+
+.action-btn:hover,
+.get_now_btn:hover,
+.btn-color:hover {
+    border-color: var(--tuffero-accent-hover);
+    background: var(--tuffero-accent-hover);
+    color: var(--tuffero-bg);
+    box-shadow: 0 0 16px rgba(198, 161, 91, 0.35);
+    text-decoration: none;
+}
+
+.trigger {
+    cursor: pointer;
+}
+
+/* 6. Social links
+   ========================================================= */
+
+.social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.social-icons a {
+    color: var(--tuffero-muted);
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: var(--tuffero-accent);
+}
+
+/* Responsive: tombol aksi dan ikon sosial di tengah layar */
+@media (max-width: 1024px) {
+    .tuffero-actions {
+        justify-content: center;
+    }
+
+    .social-icons {
+        right: 0;
+        left: 0;
+        justify-content: center;
+    }
+}
+
+/* 7. Information panel
+   ========================================================= */
+
+#right-side {
+    color: var(--tuffero-text);
+}
+
+/* Desktop: the panel scrolls itself, and rtl moves its native scrollbar to the left edge,
+   i.e. the seam between #left-side and #right-side. mCustomScrollbar stays unused here:
+   its transform-based scrolling would break position: fixed (PhotoSwipe modal). */
+@media (min-width: 1025px) {
+    #right-side {
+        height: 100vh;
+        height: 100dvh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        direction: rtl;
+    }
+
+    #right-side > * {
+        direction: ltr;
+    }
+
+    #right-side::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track reads as one 1px gold line on a dark strip (the strip sits on the white panel, so it can't be transparent). */
+    #right-side::-webkit-scrollbar-track {
+        background:
+            linear-gradient(90deg, transparent 5.5px, rgba(198, 161, 91, 0.45) 5.5px, rgba(198, 161, 91, 0.45) 6.5px, transparent 6.5px),
+            #120b08;
+    }
+
+    #right-side::-webkit-scrollbar-thumb {
+        min-height: 48px;
+        border: 3px solid #120b08;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #e9c178 0%, #c6a15b 100%);
+    }
+
+    #right-side::-webkit-scrollbar-thumb:hover {
+        background: #e9c178;
+    }
+
+    /* Firefox has no ::-webkit-scrollbar; Chrome ignores ::-webkit-scrollbar once scrollbar-color is set. */
+    @supports not selector(::-webkit-scrollbar) {
+        #right-side {
+            scrollbar-width: auto;
+            scrollbar-color: #c6a15b #120b08;
+        }
+    }
+}
+
+#right-side .inner-content {
+    margin-bottom: 36px;
+}
+
+#right-side h3 {
+    margin-bottom: 18px;
+    color: var(--tuffero-text);
+    font-family: var(--tuffero-font-display);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+#right-side p {
+    color: var(--tuffero-muted);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+#right-side h4 {
+    color: var(--tuffero-text);
+    font-family: var(--tuffero-font-display);
+    font-weight: 500;
+}
+
+#right-side .inner-content h3 em {
+    color: var(--tuffero-accent);
+    font-family: var(--tuffero-font-display);
+    font-style: italic;
+}
+
+/* Square corners everywhere inside the right-side panel. */
+#right-side,
+#right-side *,
+#right-side *::before,
+#right-side *::after {
+    border-radius: 0 !important;
+}
+
+/* 8. Product gallery
+   ========================================================= */
+
+.my-gallery figure {
+    margin-bottom: 25px;
+}
+
+/* Figures stay full width; only .gallery-half ones (Dubai Chocolate, Nastar) share a row.
+   Figures must stay direct children of .my-gallery: the PhotoSwipe init in main.js reads its childNodes. */
+.my-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.my-gallery figure {
+    grid-column: 1 / -1;
+}
+
+.my-gallery figure.gallery-half {
+    grid-column: auto;
+}
+
+@media (max-width: 480px) {
+    .my-gallery figure.gallery-half {
+        grid-column: 1 / -1;
+    }
+}
+
+/* No seam between the paired photos. */
+.my-gallery figure.gallery-half .box-picture {
+    border: 0;
+}
+
+/* Keep both titles on one line so both captions match Nastar's height. */
+#right-side .content .photo-line figure.gallery-half figcaption .photo-details {
+    padding: 1.5em 2em;
+}
+
+#right-side .content .photo-line figure.gallery-half figcaption .photo-details h4 {
+    font-size: clamp(1.1em, 2.2vw, 1.5em);
+    white-space: nowrap;
+}
+
+/* Fixed 2-line slot for the description: Dubai's text wraps, Nastar's doesn't. */
+#right-side .content .photo-line figure.gallery-half figcaption .photo-details p {
+    line-height: 1.4;
+    min-height: 2.8em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+}
+
+.my-gallery .box-picture {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border: 1px solid var(--tuffero-border);
+    border-radius: var(--tuffero-radius);
+}
+
+.my-gallery .box-picture img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.45s ease;
+}
+
+.my-gallery .box-picture:hover img {
+    transform: scale(1.035);
+}
+
+.my-gallery .box-picture p {
+    position: absolute;
+    right: 18px;
+    bottom: 8px;
+    z-index: 2;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.photo-details {
+    padding-top: 16px;
+}
+
+.photo-details h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.photo-details .border {
+    display: block;
+    width: 42px;
+    height: 2px;
+    margin-bottom: 12px;
+    background: var(--tuffero-accent);
+}
+
+.photo-details p {
+    margin-bottom: 0;
+}
+
+/* PhotoSwipe as a centered modal instead of full screen.
+   PhotoSwipe sizes slides from .pswp, so shrinking it shrinks the image too. */
+.pswp.pswp--open {
+    top: 50% !important;
+    left: 50% !important;
+    width: min(640px, 92vw) !important;
+    /* Third value: square photo + top bar + caption, so phones get no empty band. */
+    height: min(600px, 82vh, calc(92vw + 190px)) !important;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    border: 1px solid rgba(198, 161, 91, 0.35);
+    border-radius: 16px;
+    /* Same duration/easing as PhotoSwipe's opacity fade (showHideOpacity). */
+    animation: tuffero-modal-in 333ms cubic-bezier(0.4, 0, 0.22, 1);
+    /* Second shadow is the page dimmer behind the modal. */
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 100vmax rgba(12, 7, 5, 0.85);
+}
+
+@keyframes tuffero-modal-in {
+    from {
+        transform: translate(-50%, -50%) scale(0.94);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pswp.pswp--open {
+        animation: none;
+    }
+}
+
+.pswp .pswp__bg {
+    background: linear-gradient(160deg, #241712 0%, #120b08 100%);
+}
+
+.pswp .pswp__top-bar {
+    height: 56px;
+    background: transparent;
+    border-bottom: 1px solid var(--tuffero-border);
+}
+
+.pswp .pswp__counter {
+    padding: 0 20px;
+    line-height: 56px;
+    color: var(--tuffero-accent);
+    font-family: var(--tuffero-font-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    opacity: 1;
+}
+
+.pswp .pswp__top-bar .pswp__button {
+    margin: 6px 6px 0 0;
+    border-radius: 10px;
+    opacity: 0.7;
+    transition: opacity var(--tuffero-transition), background-color var(--tuffero-transition);
+}
+
+.pswp .pswp__top-bar .pswp__button:hover,
+.pswp .pswp__top-bar .pswp__button:focus-visible {
+    opacity: 1;
+    background-color: rgba(198, 161, 91, 0.15);
+}
+
+.pswp .pswp__button--close {
+    opacity: 1 !important;
+    background-color: var(--tuffero-accent);
+}
+
+.pswp .pswp__button--close:hover,
+.pswp .pswp__button--close:focus-visible {
+    background-color: var(--tuffero-accent-hover) !important;
+}
+
+.pswp .pswp__button--arrow--left::before,
+.pswp .pswp__button--arrow--right::before {
+    background-color: rgba(18, 11, 8, 0.7);
+    border: 1px solid var(--tuffero-border);
+    border-radius: 8px;
+    transition: background-color var(--tuffero-transition);
+}
+
+.pswp .pswp__button--arrow--left:hover::before,
+.pswp .pswp__button--arrow--right:hover::before {
+    background-color: var(--tuffero-accent);
+}
+
+.pswp .pswp__caption {
+    background: linear-gradient(to top, rgba(12, 7, 5, 0.95), rgba(12, 7, 5, 0));
+}
+
+.pswp .pswp__caption__center {
+    max-width: 560px;
+    padding: 20px 24px 24px;
+    text-align: center;
+}
+
+.pswp .pswp__caption .photo-details {
+    padding: 0;
+}
+
+.pswp .pswp__caption h4 {
+    margin-bottom: 10px !important;
+    color: var(--tuffero-text);
+    font-family: var(--tuffero-font-display);
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.pswp .pswp__caption .photo-details .border {
+    margin: 0 auto 12px;
+}
+
+.pswp .pswp__caption p {
+    color: var(--tuffero-muted);
+    font-family: var(--tuffero-font-body);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* 9. Launch call to action
+   ========================================================= */
+
+/* #right-side .content prefix beats the template's pink .get_now rules in style-product.css. */
+#right-side .content .get_now {
+    position: relative;
+    padding: 115px 35px;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid rgba(227, 213, 192, 0.18);
+    /* Champagne glow over dark chocolate (DESIGN.md: ambient golden diffusion). */
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(198, 161, 91, 0.18), transparent 60%),
+        linear-gradient(180deg, #2c1c15 0%, #1e1009 100%);
+    /* box-shadow: 0 16px 36px -4px rgba(12, 7, 5, 0.8), 0 0 20px rgba(198, 161, 91, 0.08); */
+}
+
+/* Inner hairline frame, like gold edging on a gift box. */
+#right-side .content .get_now::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(198, 161, 91, 0.25);
+    pointer-events: none;
+}
+
+#right-side .content .get_now .get_now-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    margin: 0 0 24px;
+    color: var(--tuffero-accent);
+    font-family: var(--tuffero-font-body);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+#right-side .content .get_now .get_now-eyebrow::before,
+#right-side .content .get_now .get_now-eyebrow::after {
+    content: "";
+    width: clamp(32px, 8vw, 72px);
+    height: 1px;
+    background: rgba(198, 161, 91, 0.6);
+}
+
+#right-side .content .get_now h3 {
+    margin: 0 0 24px;
+    color: var(--tuffero-text);
+    font-family: var(--tuffero-font-display);
+    /* Scales up to DESIGN.md display-lg (56px) on wide panels. */
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-transform: none;
+}
+
+#right-side .content .get_now h3 em {
+    color: var(--tuffero-accent);
+    font-style: italic;
+}
+
+#right-side .content .get_now .get_now-text {
+    max-width: 560px;
+    margin: 0 auto 40px;
+    color: var(--tuffero-muted);
+    font-family: var(--tuffero-font-body);
+    font-size: 17px;
+    line-height: 28px;
+    text-wrap: balance;
+}
+
+#right-side .content .get_now .get_now_btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 52px;
+    padding: 16px 40px;
+    border: 1px solid var(--tuffero-accent);
+    background: var(--tuffero-accent);
+    color: var(--tuffero-bg);
+    font-family: var(--tuffero-font-body);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#right-side .content .get_now .get_now_btn svg {
+    width: 17px;
+    height: 17px;
+    transition: transform 0.3s ease;
+}
+
+#right-side .content .get_now .get_now_btn:hover,
+#right-side .content .get_now .get_now_btn:focus-visible {
+    border-color: var(--tuffero-accent-hover);
+    background: var(--tuffero-accent-hover);
+    color: var(--tuffero-bg);
+    box-shadow: 0 0 16px rgba(198, 161, 91, 0.35);
+    transform: translateY(-2px);
+}
+
+#right-side .content .get_now .get_now_btn:hover svg {
+    transform: translateX(3px);
+}
+
+#right-side .content .get_now .get_now_btn:focus-visible {
+    outline: 2px solid var(--tuffero-accent-hover);
+    outline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+    #right-side .content .get_now {
+        margin: 40px 0;
+        padding: 48px 20px;
+    }
+
+    #right-side .content .get_now h3 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    #right-side .content .get_now .get_now-text {
+        font-size: 15px;
+        line-height: 24px;
+    }
+
+    #right-side .content .get_now .get_now_btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #right-side .content .get_now .get_now_btn,
+    #right-side .content .get_now .get_now_btn svg {
+        transition: none;
+    }
+}
+
+/* 10. Forms
+   ========================================================= */
+
+#contact-form,
+#notifyMe {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-control,
+#contact-form input,
+#contact-form textarea,
+#notifyMe input {
+    width: 100%;
+    min-height: 48px;
+    padding: 13px 15px;
+    border: 1px solid rgba(227, 213, 192, 0.25);
+    border-radius: var(--tuffero-radius-sm);
+    background: var(--tuffero-bg);
+    color: var(--tuffero-text);
+    box-shadow: none;
+    transition: border-color var(--tuffero-transition);
+}
+
+#contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-control::placeholder,
+#contact-form input::placeholder,
+#contact-form textarea::placeholder,
+#notifyMe input::placeholder {
+    color: rgba(246, 240, 229, 0.4);
+    opacity: 1;
+}
+
+.form-control:focus,
+#contact-form input:focus,
+#contact-form textarea:focus,
+#notifyMe input:focus {
+    border-color: var(--tuffero-accent);
+    background: var(--tuffero-bg);
+    color: var(--tuffero-text);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(198, 161, 91, 0.2);
+}
+
+#contact-form .btn-color {
+    border: 0;
+}
+
+#block-answer,
+.block-message {
+    margin-top: 16px;
+}
+
+#answer,
+.notify-valid {
+    color: var(--tuffero-accent);
+}
+
+/* 11. Contact information
+   ========================================================= */
+
+.info-contact {
+    margin-top: 38px;
+}
+
+.contact-item {
+    padding: 18px 8px;
+}
+
+.contact-item > i {
+    margin-bottom: 12px;
+    color: var(--tuffero-accent);
+    font-size: 22px;
+}
+
+.contact-item p {
+    overflow-wrap: anywhere;
+    font-size: 13px;
+}
+
+.contact-item a {
+    color: var(--tuffero-text);
+}
+
+.contact-item a:hover {
+    color: var(--tuffero-accent);
+}
+
+/* 12. Newsletter dialog
+   ========================================================= */
+
+.dialog__content {
+    border-radius: 10px;
+    background: var(--tuffero-surface);
+    color: var(--tuffero-text);
+}
+
+.dialog-inner {
+    padding: 10px;
+}
+
+.dialog-inner h4 {
+    margin-bottom: 16px;
+    font-size: 25px;
+}
+
+.dialog-inner p {
+    color: var(--tuffero-muted);
+    line-height: 1.8;
+}
+
+#notifyMe .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#notifyMe input {
+    flex: 1 1 220px;
+    min-width: 0;
+}
+
+#notifyMe .submit {
+    min-height: 48px;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: var(--tuffero-radius-sm);
+    background: var(--tuffero-accent);
+    color: var(--tuffero-bg);
+    font-weight: 600;
+}
+
+.close-newsletter,
+#close-more-info {
+    cursor: pointer;
+}
+
+/* 13. Footer
+   ========================================================= */
+
+/* Concierge block on the white #right-side surface: ivory cards, dark text (DESIGN.md light cards). */
+#right-side .tuffero-concierge {
+    --concierge-text: #2b1b14;
+    --concierge-muted: #6b5a50;
+    --concierge-line: rgba(43, 27, 20, 0.1);
+    --concierge-card: #fbf8f3;
+    --concierge-panel: #f8f3ea;
+    color: var(--concierge-text);
+    font-family: var(--tuffero-font-body);
+    text-align: left;
+}
+
+/* The panel-wide "no radius" rule uses !important, so the mockup's soft corners need it too. */
+#right-side .tuffero-concierge .concierge-card,
+#right-side .tuffero-concierge .concierge-form {
+    border-radius: 4px !important;
+}
+
+#right-side .tuffero-concierge .concierge-card-icon {
+    border-radius: 8px !important;
+}
+
+#right-side .tuffero-concierge input,
+#right-side .tuffero-concierge textarea,
+#right-side .tuffero-concierge .concierge-submit {
+    border-radius: 3px !important;
+}
+
+#right-side .tuffero-concierge .concierge-eyebrow {
+    margin: 0 0 8px;
+    color: #7a5c45;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+#right-side .content .tuffero-concierge .concierge-title {
+    margin: 0 0 12px;
+    color: var(--concierge-text);
+    font-family: var(--tuffero-font-display);
+    font-size: 30px;
+    font-weight: 700;
+    /* opsz kecil = garis tipis Bodoni lebih tebal, mudah dibaca */
+    font-variation-settings: "opsz" 11;
+    line-height: 38px;
+    letter-spacing: -0.01em;
+    text-transform: none;
+}
+
+#right-side .tuffero-concierge .concierge-lead {
+    max-width: 520px;
+    margin: 0 0 28px;
+    color: var(--concierge-muted);
+    font-size: 14px;
+    line-height: 22px;
+}
+
+#right-side .tuffero-concierge .concierge-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+#right-side .tuffero-concierge .concierge-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 22px 20px;
+    overflow: hidden;
+    border: 1px solid rgba(198, 161, 91, 0.3);
+    /* Warm ivory with a faint champagne sheen, like gift-box paper. */
+    background:
+        radial-gradient(circle at 100% 0%, rgba(233, 193, 120, 0.18), transparent 55%),
+        linear-gradient(160deg, #fffdf9 0%, #f7efe2 100%);
+    box-shadow: 0 1px 2px rgba(43, 27, 20, 0.04);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Gold leaf trim along the top edge. */
+#right-side .tuffero-concierge .concierge-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 22px;
+    right: 22px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c6a15b 20%, #e9c178 50%, #c6a15b 80%, transparent);
+}
+
+#right-side .tuffero-concierge .concierge-card:hover {
+    border-color: rgba(198, 161, 91, 0.7);
+    box-shadow: 0 18px 36px -16px rgba(43, 27, 20, 0.25), 0 0 20px rgba(198, 161, 91, 0.12);
+    transform: translateY(-3px);
+}
+
+#right-side .tuffero-concierge .concierge-card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: linear-gradient(145deg, #f0d08f 0%, #c6a15b 100%);
+    color: #2b1b14;
+    font-size: 15px;
+    box-shadow: 0 6px 14px -6px rgba(138, 106, 47, 0.6);
+}
+
+#right-side .content .tuffero-concierge .concierge-card h4 {
+    margin: 0 0 10px;
+    color: var(--concierge-text);
+    font-family: var(--tuffero-font-display);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: -0.01em;
+    text-transform: none;
+}
+
+#right-side .tuffero-concierge .concierge-card p {
+    flex: 1;
+    margin: 0 0 18px;
+    color: var(--concierge-muted);
+    font-size: 12px;
+    line-height: 18px;
+}
+
+#right-side .tuffero-concierge .concierge-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding-top: 14px;
+    width: 100%;
+    border-top: 1px solid rgba(198, 161, 91, 0.25);
+    color: #8a6a2f;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+}
+
+#right-side .tuffero-concierge .concierge-card a i {
+    font-size: 9px;
+    transition: transform 0.25s ease;
+}
+
+#right-side .tuffero-concierge .concierge-card a:hover {
+    color: var(--concierge-text);
+}
+
+#right-side .tuffero-concierge .concierge-card a:hover i {
+    transform: translateX(3px);
+}
+
+#right-side .tuffero-concierge .concierge-form {
+    padding: 20px 16px 16px;
+    border: 1px solid var(--concierge-line);
+    background: var(--concierge-panel);
+}
+
+#right-side .tuffero-concierge .concierge-form-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    margin-bottom: 12px;
+}
+
+#right-side .tuffero-concierge .concierge-form-title {
+    margin: 0;
+    color: var(--concierge-text);
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+#right-side .tuffero-concierge .concierge-form-note {
+    margin: 0;
+    color: var(--concierge-muted);
+    font-size: 10px;
+    line-height: 14px;
+}
+
+#right-side .tuffero-concierge .concierge-form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#right-side .tuffero-concierge input,
+#right-side .tuffero-concierge textarea {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 10px 12px;
+    border: 1px solid rgba(43, 27, 20, 0.14);
+    background: #ffffff;
+    color: var(--concierge-text);
+    font-family: var(--tuffero-font-body);
+    font-size: 12px;
+    line-height: 18px;
+    box-shadow: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+#right-side .tuffero-concierge textarea {
+    min-height: 64px;
+    margin-bottom: 14px;
+    resize: vertical;
+}
+
+#right-side .tuffero-concierge input::placeholder,
+#right-side .tuffero-concierge textarea::placeholder {
+    color: #a1948a;
+}
+
+#right-side .tuffero-concierge input:focus,
+#right-side .tuffero-concierge textarea:focus {
+    border-color: var(--tuffero-accent);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(198, 161, 91, 0.2);
+}
+
+#right-side .tuffero-concierge .concierge-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 56px;
+    padding: 14px 20px;
+    border: 0;
+    background: #e9c178;
+    color: var(--concierge-text);
+    font-family: var(--tuffero-font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+#right-side .tuffero-concierge .concierge-submit:hover {
+    background: var(--tuffero-accent);
+    box-shadow: 0 0 16px rgba(198, 161, 91, 0.35);
+}
+
+#right-side .tuffero-concierge .concierge-submit:focus-visible,
+#right-side .tuffero-concierge .concierge-card a:focus-visible {
+    outline: 2px solid var(--tuffero-accent);
+    outline-offset: 3px;
+}
+
+/* Address takes the remaining width and wraps inside its column; hours keep their own column. */
+#right-side .tuffero-concierge .concierge-meta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 8px 32px;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--concierge-line);
+}
+
+#right-side .tuffero-concierge .concierge-meta p {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 0;
+    color: var(--concierge-muted);
+    font-size: 10px;
+    line-height: 14px;
+}
+
+#right-side .tuffero-concierge .concierge-meta p i {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+@media (max-width: 480px) {
+    #right-side .tuffero-concierge .concierge-meta {
+        grid-template-columns: 1fr;
+    }
+
+    #right-side .tuffero-concierge .concierge-cards,
+    #right-side .tuffero-concierge .concierge-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #right-side .tuffero-concierge * {
+        transition: none;
+    }
+}
+
+/* 14. Loading state
+   ========================================================= */
+
+#loading {
+    background: var(--tuffero-bg);
+}
+
+/* 15. Responsive layout
+   ========================================================= */
+
+@media (max-width: 768px) {
+    #left-side h1 {
+        font-size: 34px;
+    }
+
+    #left-side h2 {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #getting-started {
+        font-size: 20px;
+        letter-spacing: 0;
+    }
+
+    #left-side nav ul {
+        gap: 10px;
+    }
+
+    .light-btn,
+    .action-btn,
+    .get_now_btn {
+        padding: 11px 16px;
+        font-size: 12px;
+    }
+
+    .tuffero-logo {
+        font-size: 27px;
+        letter-spacing: 4px;
+    }
+
+    #right-side .content {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .info-contact > div {
+        margin-bottom: 12px;
+    }
+
+    #notifyMe .submit {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #left-side h1 {
+        font-size: 29px;
+    }
+
+    #getting-started {
+        font-size: 17px;
+    }
+
+    #left-side nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #left-side nav li,
+    #left-side nav li a {
+        max-width: 100%;
+    }
+
+    #right-side h3 {
+        font-size: 25px;
+    }
+
+    .dialog-inner h4 {
+        font-size: 21px;
+    }
+}
+
+/* 16. Reduced motion accessibility
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* Newsletter dialog */
+
+#somedialog {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+#somedialog.dialog--open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#somedialog .dialog__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: rgba(12, 7, 4, 0.82);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+#somedialog .dialog__content {
+    position: relative;
+    z-index: 1;
+    width: min(100% - 32px, 500px);
+    min-width: 0;
+    max-width: 500px;
+    margin: 16px;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(227, 213, 192, 0.16);
+    border-radius: var(--tuffero-radius);
+    background: #1e1009;
+    box-shadow:
+        0 16px 36px -4px rgba(12, 7, 5, 0.8),
+        0 0 20px rgba(198, 161, 91, 0.08);
+    text-align: left;
+}
+
+#somedialog .dialog__content::before {
+    display: none;
+}
+
+#somedialog .dialog-inner {
+    position: relative;
+    padding: 48px;
+}
+
+#somedialog .close-newsletter {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: rgba(216, 195, 181, 0.68);
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+#somedialog .close-newsletter:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #f6f0e5;
+}
+
+#somedialog .close-newsletter svg {
+    width: 17px;
+    height: 17px;
+}
+
+#somedialog .newsletter-heading {
+    padding-top: 8px;
+    text-align: center;
+}
+
+#somedialog .newsletter-eyebrow {
+    margin: 0 0 14px;
+    color: #c6a15b;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+}
+
+#somedialog .newsletter-heading h2 {
+    margin: 0 0 14px;
+    color: #f6f0e5;
+    font-family: var(--tuffero-font-display);
+    font-size: clamp(26px, 5vw, 34px);
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+#somedialog .newsletter-description {
+    max-width: 360px;
+    margin: 0 auto 28px;
+    color: rgba(216, 195, 181, 0.82);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.8;
+}
+
+#somedialog #notifyMe .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#somedialog #notifyMe input {
+    flex: none;
+    min-height: 50px;
+    padding: 14px 16px;
+    border: 1px solid rgba(227, 213, 192, 0.2);
+    border-radius: var(--tuffero-radius-sm);
+    background: rgba(0, 0, 0, 0.3);
+    color: #f6f0e5;
+    font-size: 14px;
+}
+
+#somedialog #subscribe #notifyMe .form-group input.form-control {
+    border: 1px solid rgba(227, 213, 192, 0.25);
+    border-radius: var(--tuffero-radius-sm);
+    background: #1e1009;
+    color: #f6f0e5;
+    box-shadow: none;
+}
+
+#somedialog #notifyMe input::placeholder {
+    color: rgba(246, 240, 229, 0.4);
+}
+
+#somedialog #subscribe #notifyMe .form-group input.form-control:focus {
+    border-color: #c6a15b;
+    box-shadow: 0 0 0 2px rgba(198, 161, 91, 0.2);
+}
+
+#somedialog #notifyMe .submit {
+    display: inline-flex;
+    width: 100%;
+    min-height: 50px;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 20px;
+    border: 0;
+    border-radius: var(--tuffero-radius-sm);
+    background: #c6a15b;
+    color: #1e1009;
+    font-family: var(--tuffero-font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#somedialog #subscribe #notifyMe .form-group button.submit {
+    border: 0;
+    border-radius: var(--tuffero-radius-sm);
+    background: #c6a15b;
+    color: #1e1009;
+    font-family: var(--tuffero-font-body);
+}
+
+#somedialog #notifyMe .submit:hover {
+    background: #dfb86c;
+}
+
+#somedialog #subscribe #notifyMe .form-group button.submit:hover {
+    background: #dfb86c;
+    color: #1e1009;
+}
+
+#somedialog #notifyMe .submit:active {
+    transform: scale(0.99);
+}
+
+#somedialog .newsletter-privacy {
+    margin: 18px 0 0;
+    color: #8d7b70;
+    font-size: 11px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* Newsletter error (above the email input) */
+
+#somedialog .notify-error {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 180, 171, 0.3);
+    border-left: 3px solid #ffb4ab;
+    border-radius: var(--tuffero-radius-sm);
+    background: rgba(147, 0, 10, 0.18);
+    color: #ffdad6;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: left;
+    animation: notify-error-in 0.3s ease;
+}
+
+#somedialog .notify-error[hidden] {
+    display: none;
+}
+
+#somedialog .notify-error svg {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+    color: #ffb4ab;
+}
+
+#somedialog #subscribe #notifyMe .form-group input.form-control[aria-invalid="true"] {
+    border-color: #ffb4ab;
+    box-shadow: 0 0 0 2px rgba(255, 180, 171, 0.15);
+}
+
+@keyframes notify-error-in {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+}
+
+/* Newsletter loading */
+
+.notify-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+    background: rgba(12, 7, 4, 0.82);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.notify-loader.is-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.notify-loader-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 40px;
+    border: 1px solid rgba(227, 213, 192, 0.16);
+    border-radius: var(--tuffero-radius);
+    background: #1e1009;
+    box-shadow: 0 16px 36px -4px rgba(12, 7, 5, 0.8), 0 0 20px rgba(198, 161, 91, 0.08);
+}
+
+.notify-loader-ring {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(198, 161, 91, 0.2);
+    border-top-color: #c6a15b;
+    border-radius: 50%;
+    animation: notify-spin 0.9s linear infinite;
+}
+
+.notify-loader-card p {
+    margin: 0;
+    color: rgba(216, 195, 181, 0.82);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+@keyframes notify-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Newsletter success toast */
+
+.notify-toast {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 10001;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    width: min(100% - 32px, 400px);
+    padding: 18px 16px 20px 18px;
+    overflow: hidden;
+    border: 1px solid rgba(198, 161, 91, 0.35);
+    border-radius: var(--tuffero-radius);
+    background: #1e1009;
+    box-shadow: 0 16px 36px -4px rgba(12, 7, 5, 0.8), 0 0 20px rgba(198, 161, 91, 0.12);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.notify-toast.is-visible {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+}
+
+.notify-toast-icon {
+    display: grid;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border-radius: 50%;
+    background: #c6a15b;
+    color: #1e1009;
+}
+
+.notify-toast-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.notify-toast-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.notify-toast-title {
+    margin: 0 0 4px;
+    color: #f6f0e5;
+    font-family: var(--tuffero-font-display);
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.notify-toast-text {
+    margin: 0;
+    color: rgba(216, 195, 181, 0.82);
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.notify-toast-close {
+    display: grid;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    margin: -10px -8px 0 0;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: rgba(216, 195, 181, 0.68);
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.notify-toast-close:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #f6f0e5;
+}
+
+.notify-toast-close svg {
+    width: 16px;
+    height: 16px;
+}
+
+.notify-toast-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #c6a15b;
+    transform-origin: left;
+    transform: scaleX(0);
+}
+
+/* Duration matches TOAST_DURATION in js/notifyMe.js. */
+.notify-toast.is-visible .notify-toast-progress {
+    animation: notify-progress 3s linear forwards;
+}
+
+@keyframes notify-progress {
+    from {
+        transform: scaleX(1);
+    }
+}
+
+@media (max-width: 480px) {
+    .notify-toast {
+        right: 16px;
+        bottom: 16px;
+    }
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 480px) {
+    #somedialog .dialog-inner {
+        padding: 42px 24px 28px;
+    }
+
+    #somedialog .close-newsletter {
+        top: 12px;
+        right: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #somedialog,
+    #somedialog .close-newsletter,
+    #somedialog #notifyMe .submit,
+    .notify-loader,
+    .notify-toast {
+        transition: none;
+    }
+
+    #somedialog .notify-error {
+        animation: none;
+    }
+}
+
+body.newsletter-open {
+    overflow: hidden;
+}
+
+/* Replace legacy template pink hover states with DESIGN.md champagne gold. */
+#right-side .content .get_now button#valid-form:hover,
+#subscribe #notifyMe .form-group button.submit:hover,
+#contact-form button#valid-form:hover {
+    border-color: #dfb86c;
+    background: #dfb86c;
+    color: #2b1b14;
+}
+
+
+
+/* ========================================
+   TUFFERO - COMING SOON & COUNTDOWN
+   ======================================== */
+
+.tuffero-coming-soon {
+    width: 100%;
+    max-width: 620px;
+    color: var(--tuffero-text);
+    font-family: var(--tuffero-font-body);
+}
+
+/* Heading */
+
+.tuffero-heading {
+    margin-bottom: 32px;
+}
+
+.tuffero-heading h1 {
+    margin: 0;
+    color: var(--tuffero-text);
+    font-family: var(--tuffero-font-display);
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 600;
+    line-height: 1.14;
+    letter-spacing: -0.02em;
+}
+
+.tuffero-heading h1 span {
+    display: block;
+    /* Fallback when background-clip: text is unsupported. */
+    color: var(--tuffero-accent);
+    /* Was fixed 79px, which overflowed on phones. */
+    font-size: clamp(44px, 8vw, 80px);
+    font-style: italic;
+    /* background-clip: text only paints inside the box; room for tall glyphs and italic overhang. */
+    padding: 0.15em 0.1em 0.15em 0;
+
+    background: linear-gradient(
+        135deg,
+        #f6f0e5 20%,
+        #e9c178 60%,
+        #c6a15b 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Thicken the display font's hairline strokes so they don't vanish on the dark background. */
+    -webkit-text-stroke: 0.8px rgba(233, 193, 120, 0.7);
+    filter: drop-shadow(0 0 1px rgba(246, 240, 229, 0.35));
+}
+
+.tuffero-heading p {
+    max-width: 540px;
+    margin: 20px 0 0;
+    color: var(--tuffero-muted);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Countdown section */
+
+.tuffero-countdown {
+    width: 100%;
+    max-width: 520px;
+    margin-top: 30px;
+}
+
+.tuffero-countdown-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+
+    color: var(--tuffero-accent);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 1.6;
+    text-transform: uppercase;
+}
+
+.tuffero-countdown-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(198, 161, 91, 0.35);
+}
+
+/* Four countdown boxes */
+
+.tuffero-countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.tuffero-countdown-item {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 3px;
+    align-items: center;
+    justify-content: center;
+
+    padding: 18px 10px;
+    /* Dark Reserve Card */
+    border: 1px solid var(--tuffero-border);
+    border-radius: var(--tuffero-radius);
+
+    background: var(--tuffero-surface);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+
+    box-shadow: var(--tuffero-shadow-low);
+
+    transition:
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.tuffero-countdown-item:hover {
+    border-color: rgba(198, 161, 91, 0.4);
+    background: rgba(109, 76, 61, 0.3);
+}
+
+.tuffero-countdown-item > span {
+    color: var(--tuffero-text);
+    font-family: var(--tuffero-font-display);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 600;
+    font-variant-numeric: lining-nums tabular-nums;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.tuffero-countdown-item small {
+    margin-top: 7px;
+    color: var(--tuffero-muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+/* Gold accent on seconds */
+
+.tuffero-countdown-item.tuffero-countdown-seconds {
+    border: 1px solid rgba(198, 161, 91, 0.6);
+    background: rgba(198, 161, 91, 0.06);
+}
+
+.tuffero-countdown-seconds > span {
+    color: #e9c178;
+}
+
+.tuffero-countdown-seconds small {
+    color: var(--tuffero-accent);
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+    .tuffero-heading {
+        margin-bottom: 26px;
+    }
+
+    .tuffero-heading p {
+        margin-top: 16px;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .tuffero-countdown-grid {
+        gap: 8px;
+    }
+
+    .tuffero-countdown-item {
+        padding: 14px 4px;
+        border-radius: 12px;
+    }
+
+    .tuffero-countdown-item small {
+        font-size: 9px;
+        letter-spacing: 0.1em;
+    }
+
+    .tuffero-countdown-label {
+        font-size: 10px;
+        letter-spacing: 0.14em;
+    }
+}
+
+
+/* ========================================
+   FONT AWESOME 7.3.1
+   Letakkan paling akhir setelah CSS lainnya
+======================================== */
+
+/* Reset tampilan ikon */
+#left-side .social-icons i,
+#right-side i,
+#close-more-info i,
+.dialog i,
+i.fas,
+i.fab,
+i.fa,
+i.fa-solid,
+i.fa-brands {
+    font-style: normal;
+}
+
+/* Solid icons */
+i.fas,
+i.fa,
+i.fa-solid,
+#right-side i.fas,
+#close-more-info i.fas,
+.dialog i.fas {
+    font-family: "Font Awesome 7 Free" !important;
+    font-weight: 900 !important;
+}
+
+/* Brand icons */
+i.fab,
+i.fa-brands,
+#left-side .social-icons i.fab {
+    font-family: "Font Awesome 7 Brands" !important;
+    font-weight: 400 !important;
+}
+
+
+/* Desktop dengan tinggi layar pendek (mis. laptop 1920x1080 dengan skala 170% = viewport 1130x548):
+   logo, konten, dan ikon sosial memakai position absolute dari tema, jadi konten
+   diperkecil agar tidak menimpa logo di atas dan ikon sosial di bawah. */
+@media (min-width: 1025px) and (max-height: 800px) {
+    #left-side .tuffero-logo {
+        width: 120px;
+    }
+
+    .tuffero-heading {
+        margin-bottom: 16px;
+    }
+
+    .tuffero-heading h1 span {
+        font-size: clamp(36px, 8vh, 80px);
+    }
+
+    .tuffero-heading p {
+        margin-top: 10px;
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .tuffero-countdown {
+        margin-top: 12px;
+    }
+
+    .tuffero-countdown-label {
+        margin-bottom: 8px;
+    }
+
+    .tuffero-countdown-item {
+        padding: 8px 10px;
+    }
+
+    .tuffero-countdown-item > span {
+        font-size: clamp(24px, 5vh, 48px);
+    }
+
+    .tuffero-countdown-item small {
+        margin-top: 2px;
+    }
+
+    .tuffero-actions {
+        margin-top: 16px;
+    }
+
+    .tuffero-btn {
+        min-height: 40px;
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+}
