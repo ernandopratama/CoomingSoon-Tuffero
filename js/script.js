@@ -14,7 +14,7 @@
         // Ubah tanggal ini sesuai jadwal peluncuran Tuffero.
         // Format ISO 8601 dengan zona WIB (+07:00) agar countdown
         // sama untuk semua pengunjung, di zona waktu mana pun.
-        launchDate: "2026-12-31T23:59:59+07:00",
+        launchDate: "2027-01-04T00:00:00+07:00",
     };
 
     /* 2. Countdown
