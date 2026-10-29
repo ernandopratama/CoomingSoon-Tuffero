@@ -1,0 +1,8 @@
+---
+# cPanel Git Version Control: Deploy HEAD Commit menyalin file publik ke document root.
+# shortcut: file yang dihapus dari repo tidak ikut terhapus di server, hapus manual lewat File Manager.
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/ernando2/tuffero.comingsoon.ernando.my.id/
+    - /bin/cp index.html .htaccess $DEPLOYPATH
+    - /bin/cp -R css js img $DEPLOYPATH
