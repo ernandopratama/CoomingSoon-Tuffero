@@ -117,6 +117,13 @@ body.vegas-container > .vegas-slide.vegas-transition-fade-out {
         --overlay-split 0.5s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
+/* Tablet/mobile: no gradient; .overlay alone darkens the slideshow. */
+@media (max-width: 1024px) {
+    .global-overlay {
+        background-image: none !important;
+    }
+}
+
 /* Right side open: .overlay drops .skew-part, so the split straightens to its 50% edge. */
 @media (min-width: 1025px) {
     .global-overlay:has(.overlay:not(.skew-part)) {
