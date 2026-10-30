@@ -18,8 +18,8 @@
 
     if (!loader || !stage || !logo) return;
 
-    // Animasi logo di CSS selesai ≈ 5.55s, lalu tahan 1s sebelum halaman tampil
-    const MIN_VISIBLE_MS = 5550 + 1000;
+    // Animasi logo di CSS selesai ≈ 4.5s, lalu tahan 1s sebelum halaman tampil
+    const MIN_VISIBLE_MS = 4500 + 1000;
     const SPARK_COUNT = 18;
     // Animasi CSS mulai di frame pertama, bukan saat script ini jalan (CSS CDN bisa menunda render).
     let startedAt = Date.now();
@@ -44,7 +44,7 @@
             spark.style.setProperty("--size", (1 + Math.random() * 2.5) + "px");
             spark.style.setProperty("--dx", (-20 - Math.random() * 50) + "px");
             spark.style.setProperty("--dy", (Math.random() * 40 - 20) + "px");
-            spark.style.setProperty("--delay", (1050 + progress * 2550) + "ms");
+            spark.style.setProperty("--delay", (progress * 2550) + "ms");
 
             stage.appendChild(spark);
         }

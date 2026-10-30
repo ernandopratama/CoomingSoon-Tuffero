@@ -142,34 +142,8 @@
         will-change: filter;
 
         animation:
-            tuffero-logo-write 2.85s cubic-bezier(0.45, 0.05, 0.35, 1) 1.05s forwards,
-            tuffero-logo-cool 1.2s ease-out 3.75s forwards;
-    }
-
-    /* Garis cahaya dari kiri dan kanan */
-    #tuffero-loader .tuffero-streak {
-        position: absolute;
-        top: 55%;
-        width: 46%;
-        height: 2px;
-        border-radius: 2px;
-        opacity: 0;
-        pointer-events: none;
-        filter: drop-shadow(0 0 4px rgba(245, 165, 80, 0.9)) drop-shadow(0 0 10px rgba(220, 130, 40, 0.6));
-    }
-
-    #tuffero-loader .tuffero-streak--left {
-        left: 4%;
-        transform-origin: right center;
-        background: linear-gradient(90deg, transparent, rgba(230, 150, 70, 0.7) 60%, #fff4dc);
-        animation: tuffero-streak-left 1.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-
-    #tuffero-loader .tuffero-streak--right {
-        right: 4%;
-        transform-origin: left center;
-        background: linear-gradient(270deg, transparent, rgba(230, 150, 70, 0.7) 60%, #fff4dc);
-        animation: tuffero-streak-right 1.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+            tuffero-logo-write 2.85s cubic-bezier(0.45, 0.05, 0.35, 1) 0s forwards,
+            tuffero-logo-cool 1.2s ease-out 2.7s forwards;
     }
 
     /* Pena cahaya: berjalan seiring tepi mask logo */
@@ -188,7 +162,7 @@
             0 0 8px 2px rgba(255, 230, 180, 0.95),
             0 0 24px 8px rgba(240, 150, 50, 0.7),
             0 0 60px 18px rgba(200, 110, 30, 0.35);
-        animation: tuffero-pen-travel 2.85s cubic-bezier(0.45, 0.05, 0.35, 1) 1.05s forwards;
+        animation: tuffero-pen-travel 2.85s cubic-bezier(0.45, 0.05, 0.35, 1) 0s forwards;
     }
 
     #tuffero-loader .tuffero-pen::before {
@@ -230,7 +204,7 @@
         opacity: 0;
         transform: scaleX(0.2);
         pointer-events: none;
-        animation: tuffero-floor-in 1.35s ease-out 3.9s forwards;
+        animation: tuffero-floor-in 1.35s ease-out 2.85s forwards;
     }
 
     #tuffero-loader .tuffero-logo-floor::after {
@@ -261,7 +235,7 @@
         transform: translateX(-120%);
         opacity: 0;
         pointer-events: none;
-        animation: tuffero-logo-shimmer 1.65s ease-out 4.65s forwards;
+        animation: tuffero-logo-shimmer 1.65s ease-out 3.6s forwards;
     }
 
     /* Fallback bila logo gagal dimuat */
@@ -341,18 +315,6 @@
         font-size: 9px;
         font-weight: 500;
         letter-spacing: 0.3em;
-    }
-
-    @keyframes tuffero-streak-left {
-        0%   { opacity: 0; transform: translateX(-90%) scaleX(0.6); }
-        55%  { opacity: 1; transform: translateX(0) scaleX(1); }
-        100% { opacity: 0; transform: translateX(4%) scaleX(0.15) rotate(-4deg); }
-    }
-
-    @keyframes tuffero-streak-right {
-        0%   { opacity: 0; transform: translateX(90%) scaleX(0.6); }
-        55%  { opacity: 1; transform: translateX(0) scaleX(1); }
-        100% { opacity: 0; transform: translateX(-4%) scaleX(0.15) rotate(4deg); }
     }
 
     @keyframes tuffero-logo-write {
@@ -438,7 +400,6 @@
             filter: drop-shadow(0 0 10px rgba(214, 150, 70, 0.25));
         }
 
-        #tuffero-loader .tuffero-streak,
         #tuffero-loader .tuffero-pen,
         #tuffero-loader .tuffero-spark,
         #tuffero-loader .tuffero-logo-stage::after {
@@ -548,8 +509,6 @@
           id="tuffero-logo-stage"
           aria-hidden="true"
         >
-          <span class="tuffero-streak tuffero-streak--left"></span>
-          <span class="tuffero-streak tuffero-streak--right"></span>
           <img
             id="tuffero-logo-source"
             src="img/Tuffero Script Logo White - NoBckgrnd-1086.webp"
@@ -1335,7 +1294,7 @@
     <script src="js/script.js?v=20261030b" defer></script>
 
     <!-- Loader logo Tuffero (memicu intro main.js lewat event "tuffero:loaded") -->
-    <script src="js/tuffero-loader.js?v=20261030b" defer></script>
+    <script src="js/tuffero-loader.js?v=20261030c" defer></script>
 
     <!-- Main template script -->
     <script src="js/main.js?v=20261030b" defer></script>
