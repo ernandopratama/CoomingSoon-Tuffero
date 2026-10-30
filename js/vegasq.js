@@ -14,12 +14,12 @@ $(document).on('tuffero:loaded', function () {
     setTimeout(function () {
         $('body').vegas({
             slides: [
-                { src: 'img/slide/qslide-1.png' },
-                { src: 'img/slide/qslide-2.png' },
-                { src: 'img/slide/qslide-3.png' },
-                { src: 'img/slide/qslide-4.png' },
-                { src: 'img/slide/qslide-5.png' },
-                { src: 'img/slide/qslide-6.png' }
+                { src: 'img/slide/qslide-1.webp' },
+                { src: 'img/slide/qslide-2.webp' },
+                { src: 'img/slide/qslide-3.webp' },
+                { src: 'img/slide/qslide-4.webp' },
+                { src: 'img/slide/qslide-5.webp' },
+                { src: 'img/slide/qslide-6.webp' }
             ],
 
             // Durasi sebelum berpindah ke slide berikutnya

@@ -87,7 +87,7 @@
      * dimuat Vegas sendiri selama jeda antarslide.
      */
     function waitForFirstSlide() {
-        return waitForImage("img/slide/qslide-1.png");
+        return waitForImage("img/slide/qslide-1.webp");
     }
 
     function hideLoader() {
