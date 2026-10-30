@@ -121,6 +121,8 @@
     // Tanpa menunggu window "load": itu ikut menunggu semua slide (±11 MB).
     Promise.all([
         waitForPageImages(),
-        waitForFirstSlide()
+        waitForFirstSlide(),
+        // CSS non-blocking (lihat js/script.js) harus sudah aktif sebelum halaman tampil
+        window.tufferoCssReady
     ]).then(hideAfterAnimation, hideAfterAnimation);
 })();

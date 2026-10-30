@@ -6,9 +6,32 @@
 
 // CSS non-kritis dimuat dengan media="print" agar tidak memblokir render;
 // aktifkan di sini karena CSP (script-src 'self') melarang onload inline.
-document.querySelectorAll('link[data-deferred-css]').forEach(function (link) {
-    link.media = "all";
+// tuffero-loader.js menunggu window.tufferoCssReady sebelum menampilkan halaman.
+window.tufferoCssReady = Promise.race([
+    Promise.all(Array.from(document.querySelectorAll("link[data-deferred-css]")).map(function (link) {
+        link.media = "all";
+        if (link.sheet) return Promise.resolve();
+
+        return new Promise(function (resolve) {
+            link.addEventListener("load", resolve, { once: true });
+            link.addEventListener("error", resolve, { once: true });
+        });
+    })),
+    // Error CSS yang terjadi sebelum script ini jalan tidak terdengar lagi: jangan macet.
+    new Promise(function (resolve) {
+        window.setTimeout(resolve, 10000);
+    })
+]).then(function () {
+    document.documentElement.classList.add("tuffero-css-ready");
 });
+
+// Handler $(document).ready (main.js, mCustomScrollbar, dll.) mengukur layout: tahan sampai CSS aktif.
+if (window.jQuery) {
+    window.jQuery.holdReady(true);
+    window.tufferoCssReady.then(function () {
+        window.jQuery.holdReady(false);
+    });
+}
 
 (function ($) {
     "use strict";
@@ -293,10 +316,60 @@ document.querySelectorAll('link[data-deferred-css]').forEach(function (link) {
         });
     }
 
-    /* 8. Initialize
+    /* 8. PhotoSwipe on demand
+       ===================================================== */
+
+    // PhotoSwipe (±33 KiB) baru diunduh saat galeri pertama kali diklik;
+    // handler galeri di main.js baru memakai PhotoSwipe saat itu.
+    // shortcut: link berbagi #&gid=..&pid=.. tidak didukung (history: false di main.js tidak pernah membuatnya).
+    let photoSwipeLoading = null;
+
+    function loadScript(src) {
+        return new Promise(function (resolve, reject) {
+            const script = document.createElement("script");
+            script.src = src;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.body.appendChild(script);
+        });
+    }
+
+    function initLazyPhotoSwipe() {
+        document.addEventListener("click", function (event) {
+            if (window.PhotoSwipe) {
+                return;
+            }
+
+            const link = event.target.closest && event.target.closest(".my-gallery a");
+
+            if (!link) {
+                return;
+            }
+
+            // Tahan klik ini (capture) sebelum sampai ke handler galeri, ulangi setelah script siap.
+            event.preventDefault();
+            event.stopPropagation();
+
+            photoSwipeLoading = photoSwipeLoading || Promise.all([
+                loadScript("js/photoswipe.js"),
+                loadScript("js/photoswipe-ui-default.js"),
+            ]);
+
+            photoSwipeLoading.then(function () {
+                link.click();
+            }, function () {
+                // Gagal memuat: buka gambarnya langsung.
+                photoSwipeLoading = null;
+                window.location.href = link.href;
+            });
+        }, true);
+    }
+
+    /* 9. Initialize
        ===================================================== */
 
     $(function () {
+        initLazyPhotoSwipe();
         initCountdown();
         initCurrentYear();
         initNewsletterDialog();

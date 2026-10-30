@@ -124,17 +124,50 @@ Hal yang tidak diubah: isi dan URL gambar produk, slide Vegas, desain, durasi an
 
 ## 7. Perbandingan skor
 
-Kolom "Sesudah" berisi hasil Lighthouse lokal. Angka PSI produksi setelah optimasi **belum ada**, karena perubahan belum di-deploy. Isi kolom ini setelah deploy dan uji ulang.
+Kedua kolom berisi hasil PSI produksi (pagespeed.web.dev, Lighthouse 13.6.0). "Sebelum" diambil 30 Oktober 2026 pukul 08:33 pada commit `2ca4276`. "Sesudah" diambil setelah commit `9aaee05` di-deploy. Hasil PSI bervariasi sekitar ±5 poin antar run, dan ini hasil satu kali run.
 
-| Metrik | Sebelum (PSI produksi) | Sesudah (Lighthouse lokal) | Status |
+| Metrik | Sebelum | Sesudah | Status |
 |---|---|---|---|
-| Performance Mobile | 76 | 43 (lokal, baseline lokal 41) | Naik 2 poin di lokal. PSI produksi menunggu deploy. |
-| Performance Desktop | 92 | 90 (lokal, baseline lokal 87) | Naik 3 poin di lokal. PSI produksi menunggu deploy. |
-| FCP (Mobile) | 1.7 s | 2.21 s (lokal, baseline 2.73 s) | Membaik 0.5 s di lokal |
-| LCP (Mobile) | 4.9 s | 10.14 s simulasi / ±2.0 s observasi (lokal, baseline 10.74 s) | Membaik 0.6 s di lokal. Byte gambar LCP turun 55%. |
-| TBT (Mobile) | 0 ms | 1,489 ms (lokal, baseline 1,178 ms) | Dalam rentang noise (349–2,778 ms) |
-| CLS (Mobile) | 0.055 | 0.000 | Teratasi |
-| Speed Index (Mobile) | 5.5 s | 5.41 s (lokal, baseline 5.43 s) | Tetap |
+| Performance Mobile | 76 | 86 | Naik 10 poin |
+| Performance Desktop | 92 | 95 | Naik 3 poin |
+| FCP (Mobile / Desktop) | 1.7 s / 0.5 s | 1.6 s / 0.4 s | Membaik |
+| LCP (Mobile / Desktop) | 4.9 s / 1.3 s | 3.5 s / 1.1 s | Membaik. Mobile turun 1.4 s, tetapi masih di atas target 2.5 s. |
+| TBT (Mobile / Desktop) | 0 ms / 0 ms | 0 ms / 0 ms | Tetap |
+| CLS (Mobile / Desktop) | 0.055 / 0.014 | 0 / 0 | Teratasi |
+| Speed Index (Mobile / Desktop) | 5.5 s / 2.0 s | 5.1 s / 1.8 s | Membaik |
+
+Accessibility, Best Practices, dan SEO tetap 100.
+
+Rincian LCP Mobile sesudah optimasi: TTFB 0 ms, load delay 1,280 ms, load duration 200 ms (sebelumnya 390 ms), render delay 1,230 ms. Sisa temuan PSI Mobile:
+- Render-blocking requests: perkiraan hemat 2,270 ms. Yang masih memblokir adalah `style.css`, `style-product.css`, dan Google Fonts.
+- Improve image delivery: 299 KiB, terutama gambar produk.
+- Cache 72 KiB, unused/minify JS-CSS, dan font display Font Awesome 30 ms.
+
+Untuk referensi, Lighthouse lokal (median 3 run, sebelum → sesudah) mencatat Mobile 41 → 43, Desktop 87 → 90, dan CLS → 0. Penjelasan kenapa angka lokal lebih rendah ada di bagian 6.
+
+### Tahap 2 (belum diuji di produksi)
+
+Perubahan setelah hasil PSI bagian 7, ditujukan untuk CSS pemblokir render dan JavaScript tidak terpakai:
+
+| File | Perubahan |
+|---|---|
+| `index.html` | CSS loader (±400 baris) dipindah inline ke `<style>` di `<head>`, dengan reset dasar secukupnya. `style-product.css`, `style.css`, dan Google Fonts dimuat dengan `media="print"` + `data-deferred-css`. Script PhotoSwipe dihapus dari `<body>`. Konten di balik loader `display: none` sampai CSS siap. |
+| `css/style-product.css` | Blok CSS loader dihapus (pindah ke `index.html`). |
+| `js/script.js` | `window.tufferoCssReady` (menunggu semua CSS tertunda, batas 10 s) dan `jQuery.holdReady` agar handler `ready` baru jalan setelah CSS aktif. PhotoSwipe (±33 KiB) diunduh saat galeri pertama kali diklik. |
+| `js/tuffero-loader.js` | Loader menunggu `window.tufferoCssReady` sebelum hilang. |
+
+Temuan saat menguji: pada versi pertama, halaman tanpa gaya melebar sampai 1086–1457 px (gambar produk 1200 px+) dan memperbesar viewport mobile. Saat CSS masuk, viewport menciut dan memicu CLS 0.292 di 2 dari 3 run Lighthouse mobile. Diperbaiki dengan `display: none` (bukan `visibility: hidden`) dan `line-height` CSS kritis yang sama dengan hasil akhir.
+
+Hasil Lighthouse lokal setelah perbaikan (3 run, mesin sedang sibuk sehingga angkanya sangat bervariasi):
+
+| Metrik | Mobile | Desktop |
+|---|---|---|
+| CLS | 0.000 / 0.000 / 0.018 | 0.000 / 0.009 / 0.000 |
+| FCP (median) | 1.19 s | 0.63 s |
+| Unused JavaScript (perkiraan hemat) | 140 KiB (sebelumnya 257 KiB) | 103 KiB (sebelumnya 220 KiB) |
+| TBT (median) | 4,662 ms | 1,471 ms |
+
+**Risiko:** TBT lokal lebih tinggi dari sebelumnya. Penyebab yang paling mungkin adalah FCP yang kini jauh lebih awal, sehingga eksekusi script yang sebelumnya terjadi sebelum FCP sekarang ikut dihitung. TBT di PSI produksi sebelumnya 0 ms. Setelah deploy, **cek ulang PSI**. Jika skor turun, kembalikan dengan `git revert` pada commit tahap 2.
 
 ## 8. Masalah yang belum terselesaikan
 
@@ -150,7 +183,7 @@ Kolom "Sesudah" berisi hasil Lighthouse lokal. Angka PSI produksi setelah optima
 
 ## 9. Rekomendasi tahap berikutnya
 
-1. **Deploy, lalu uji ulang PSI produksi** untuk Mobile dan Desktop, dan isi kolom bagian 7. Ini prioritas pertama, karena angka lokal tidak bisa dibandingkan langsung dengan produksi.
+1. **Uji tahap 2 di PSI produksi** (lihat "Tahap 2" di bagian 6). Perhatikan TBT dan LCP Mobile, lalu putuskan apakah dipertahankan atau di-revert.
 2. **Thumbnail produk** ±720 px (`srcset` 720w + file asli untuk PhotoSwipe). Perkiraan hemat ±240 KiB. Perlu persetujuan karena menambah file gambar produk.
 3. **Persempit Google Fonts.** Cek apakah Bodoni Moda benar-benar memakai seluruh rentang `opsz` 6..96 dan bobot 400..700 pada kedua gaya (tegak dan miring). Kurangi sesuai pemakaian, lalu bandingkan tampilannya. Uji varian menunjukkan font adalah biaya layout terbesar.
 4. **Cache header** di `.htaccess`: `max-age` 30 hari untuk `img/`, dan untuk CSS/JS yang punya `?v=`. Tambahkan `?v=` ke semua JS lokal terlebih dulu.
