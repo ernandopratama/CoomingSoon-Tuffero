@@ -250,6 +250,8 @@ body.vegas-container:has(#right-side:not(.hide-right), .dialog--open, .pswp--ope
     aspect-ratio: 3 / 1;
     margin-bottom: 34px;
     isolation: isolate;
+    /* cqw untuk jarak tempuh pena (lihat tuffero-pen-travel) */
+    container-type: inline-size;
 }
 
 /* Logo: terungkap kiri ke kanan (mask), menyala emas, lalu mendingin */
@@ -507,10 +509,11 @@ body.vegas-container:has(#right-side:not(.hide-right), .dialog--open, .pswp--ope
 
 @keyframes tuffero-pen-travel {
     /* sama dengan tepi mask logo (logo melebar 40px tiap sisi) */
-    0%   { left: calc(-10% - 48px); opacity: 0; }
+    /* transform, bukan left: animasi left memicu layout shift (CLS) */
+    0%   { transform: translateX(0); opacity: 0; }
     8%   { opacity: 1; }
     90%  { opacity: 1; }
-    100% { left: calc(110% + 48px); opacity: 0; }
+    100% { transform: translateX(calc(120cqw + 96px)); opacity: 0; }
 }
 
 @keyframes tuffero-logo-cool {

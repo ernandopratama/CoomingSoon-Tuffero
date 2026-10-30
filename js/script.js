@@ -4,6 +4,12 @@
    Custom JavaScript
    ========================================================= */
 
+// CSS non-kritis dimuat dengan media="print" agar tidak memblokir render;
+// aktifkan di sini karena CSP (script-src 'self') melarang onload inline.
+document.querySelectorAll('link[data-deferred-css]').forEach(function (link) {
+    link.media = "all";
+});
+
 (function ($) {
     "use strict";
 

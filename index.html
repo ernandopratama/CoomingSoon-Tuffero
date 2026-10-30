@@ -18,15 +18,18 @@
         rel="stylesheet"
         href="https://www.creative51.com/themeforest/phly/css/style-product.css"
     /> -->
-    <link rel="stylesheet" href="css/style-product.css?v=20261029c" />
+    <link rel="stylesheet" href="css/style-product.css?v=20261030a" />
 
-    <!-- PhotoSwipe CSS (style-product.css @imports local copies that don't exist) -->
+    <!-- PhotoSwipe CSS (style-product.css @imports local copies that don't exist).
+         media="print" + data-deferred-css: non-blocking, diaktifkan js/script.js -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.0/photoswipe.min.css"
       integrity="sha384-RwqXktmFwvDy302OEXDYKmhW7nwptXdAvYhepOVl+1EP3ecU4MBqZUS4PfgE3Odi"
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
+      media="print"
+      data-deferred-css
     />
     <link
       rel="stylesheet"
@@ -34,15 +37,19 @@
       integrity="sha384-40/4ldoa8HiOXttRhjIvAA6V7mrBfIEyeAUCBQ9h5IewJEKbXtlNQNCXwAkS+vZ/"
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
+      media="print"
+      data-deferred-css
     />
 
-    <!-- Font Awesome CDN -->
+    <!-- Font Awesome CDN (non-blocking, lihat catatan PhotoSwipe di atas) -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
       integrity="sha384-qrALq7+6jBOZIQsNnT6xGkMDru64qD6uTlDra39xrt2SoXl4pO3FX6Roz/RpR/BS"
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
+      media="print"
+      data-deferred-css
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -58,10 +65,10 @@
     <link rel="shortcut icon" href="img/Tuffero Icon - NoBckgrnd.webp" />
 
     <!-- Custom CSS Tuffero -->
-    <link rel="stylesheet" href="css/style.css?v=20261029c" />
+    <link rel="stylesheet" href="css/style.css?v=20261030a" />
 
     <!-- Modernizr -->
-    <script src="js/modernizr.custom.js"></script>
+    <script src="js/modernizr.custom.js" defer></script>
   </head>
 
   <body>
@@ -83,7 +90,12 @@
           <span class="tuffero-streak tuffero-streak--right"></span>
           <img
             id="tuffero-logo-source"
-            src="img/Tuffero Script Logo White - NoBckgrnd.webp"
+            src="img/Tuffero Script Logo White - NoBckgrnd-1086.webp"
+            srcset="
+              img/Tuffero%20Script%20Logo%20White%20-%20NoBckgrnd-1086.webp 1086w,
+              img/Tuffero%20Script%20Logo%20White%20-%20NoBckgrnd.webp      2172w
+            "
+            sizes="(max-width: 600px) 100vw, 680px"
             alt=""
             class="tuffero-logo"
             width="2172"
@@ -128,8 +140,10 @@
       <!-- Tuffero brand -->
       <a href="#" class="brand-logo tuffero-logo" aria-label="Tuffero">
         <img
-          src="img/Tuffero Script Logo White - NoBckgrnd.webp"
+          src="img/Tuffero Script Logo White - NoBckgrnd-1086.webp"
           alt="Tuffero"
+          width="1086"
+          height="362"
         />
       </a>
 
@@ -302,6 +316,8 @@
               >
                 <img
                   src="img/produk/Pia%20premium%201.webp"
+                  width="1200"
+                  height="1200"
                   itemprop="thumbnail"
                   alt="Pia Premium Cokelat Tuffero"
                   class="img-fluid"
@@ -336,6 +352,8 @@
               >
                 <img
                   src="img/produk/Macaron%20isi%2030%201.webp"
+                  width="1181"
+                  height="1181"
                   itemprop="thumbnail"
                   alt="Kotak Macaron Mini isi 30 Tuffero"
                   class="img-fluid"
@@ -370,6 +388,8 @@
               >
                 <img
                   src="img/produk/Dubai%204.webp"
+                  width="1182"
+                  height="1182"
                   itemprop="thumbnail"
                   alt="Dubai Chocolate Tuffero"
                   class="img-fluid"
@@ -404,6 +424,8 @@
               >
                 <img
                   src="img/produk/Nastar%20Sultan%205.webp"
+                  width="1417"
+                  height="1417"
                   itemprop="thumbnail"
                   alt="Nastar Sultan Tuffero"
                   class="img-fluid"
@@ -817,26 +839,26 @@
     </div>
 
     <!-- Local template libraries -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.easings.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/velocity.min.js"></script>
-    <script src="js/velocity.ui.min.js"></script>
-    <script src="js/notifyMe.js"></script>
-    <script src="js/vegasq.js"></script>
-    <script src="js/jquery.mousewheel.js"></script>
-    <script src="js/jquery.mCustomScrollbar.js"></script>
-    <script src="js/classie.js"></script>
-    <script src="js/dialogFx.js"></script>
-    <script src="js/photoswipe.js"></script>
-    <script src="js/photoswipe-ui-default.js"></script>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jquery.easings.min.js" defer></script>
+    <script src="js/bootstrap.min.js" defer></script>
+    <script src="js/velocity.min.js" defer></script>
+    <script src="js/velocity.ui.min.js" defer></script>
+    <script src="js/notifyMe.js" defer></script>
+    <script src="js/vegasq.js" defer></script>
+    <script src="js/jquery.mousewheel.js" defer></script>
+    <script src="js/jquery.mCustomScrollbar.js" defer></script>
+    <script src="js/classie.js" defer></script>
+    <script src="js/dialogFx.js" defer></script>
+    <script src="js/photoswipe.js" defer></script>
+    <script src="js/photoswipe-ui-default.js" defer></script>
     <!-- Custom JavaScript Tuffero -->
-    <script src="js/script.js?v=20261029c"></script>
+    <script src="js/script.js?v=20261030a" defer></script>
 
     <!-- Loader logo Tuffero (memicu intro main.js lewat event "tuffero:loaded") -->
-    <script src="js/tuffero-loader.js?v=20261029c"></script>
+    <script src="js/tuffero-loader.js?v=20261030a" defer></script>
 
     <!-- Main template script -->
-    <script src="js/main.js?v=20261029c"></script>
+    <script src="js/main.js?v=20261030a" defer></script>
   </body>
 </html>
